@@ -1,0 +1,45 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /home/bora/labs/tripscanner/node_modules/.bin:/home/bora/labs/node_modules/.bin:/home/bora/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/bin:/home/bora/.npm/_npx/31381/bin:/usr/bin:/home/bora/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin:/snap/bin
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  12.16.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: [2K[1Ghttps://registry.yarnpkg.com/@vue%2fcli-plugin-babel: Invalid URI "[2K[1Ghttps://registry.yarnpkg.com/@vue%2fcli-plugin-babel"
+      at Request.module.exports.Request.init (/usr/share/yarn/lib/cli.js:140815:31)
+      at new Request (/usr/share/yarn/lib/cli.js:140669:8)
+      at request (/usr/share/yarn/lib/cli.js:137575:10)
+      at RequestManager.execute (/usr/share/yarn/lib/cli.js:67027:15)
+      at RequestManager.shiftQueue (/usr/share/yarn/lib/cli.js:67065:10)
+      at /usr/share/yarn/lib/cli.js:66734:13
+      at new Promise (<anonymous>)
+      at new F (/usr/share/yarn/lib/cli.js:5301:28)
+      at RequestManager.request (/usr/share/yarn/lib/cli.js:66732:19)
+      at NpmRegistry.<anonymous> (/usr/share/yarn/lib/cli.js:31704:42)
+
+npm manifest: 
+  {
+    "name": "tripscanner",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "~4.2.0",
+      "@vue/cli-plugin-eslint": "~4.2.0",
+      "@vue/cli-service": "~4.2.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
