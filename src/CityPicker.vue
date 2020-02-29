@@ -10,6 +10,8 @@
         <b-list-group>
             <b-list-group-item
                     v-for="option in this.options"
+                    :name="option.name"
+                    :country="option.country"
                     :id="option.name + ',' +  option.country"
                     :key="option.name + ',' +  option.country"
                     v-on:click="cityClick"
@@ -21,7 +23,7 @@
         <div v-if="!this.hideDays">
             <br/>
             <b-input-group prepend="Number of Days" class="mt-3">
-                <b-form-input type="number" min="1"></b-form-input>
+                <b-form-input type="number" min="1" v-model="days"></b-form-input>
             </b-input-group>
         </div>
     </b-card>
@@ -39,18 +41,22 @@
                 "query": "",
                 "options": [],
                 "activeKey": "",
+                "name": "",
+                "country": "",
+                "days": "",
             }
         },
 
         methods: {
             mySearch() {
-                console.log(this.query);
                 this.options = this.search(this.query).slice(0, 5);
             },
 
             cityClick(e) {
-                console.log("!!!", e.target.id);
                 this.activeKey = e.target.id;
+
+                this.name = e.target.getAttribute("name");
+                this.country = e.target.getAttribute("country");
             }
         },
     }

@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from "./App"
 import ResultsApp from "./ResultsApp"
 import CityPicker from "./CityPicker";
+import Visit from "./Visit"
 
 import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
@@ -24,11 +25,12 @@ import VueRouter from 'vue-router'
     Vue.use(BootstrapVue);
 
     Vue.component("CityPicker", CityPicker);
+    Vue.component("Visit", Visit);
 
     const router = new VueRouter({
         routes: [
             {path: "/", name:"home", component: App, props: {fuse: fuse}},
-            {path: '/results', name:"results", component: ResultsApp},
+            {path: '/results', name:"results", component: ResultsApp, props: true},
         ],
     });
 

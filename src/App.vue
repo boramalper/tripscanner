@@ -8,7 +8,9 @@
         <main>
             <div class="container-fluid">
                 <h2>From</h2>
+                <b-form-datepicker v-model="startDate" class="mb-2"></b-form-datepicker>
                 <CityPicker
+                        ref="from"
                         :search="this.search"
                         :hideDays="true"
                 ></CityPicker>
@@ -17,6 +19,7 @@
                 <div id="cityPickers">
                     <CityPicker
                             v-for="cityPicker in this.cityPickers"
+                            ref="hops"
                             :key="cityPicker.uuid"
                             :search="search"
                             :hideDays="false"
@@ -24,7 +27,7 @@
                 </div>
             </div>
 
-            <br />
+            <br/>
             <div class="container-fluid">
                 <div id="buttons">
                     <b-button variant="success" v-on:click="appendCityPicker">Add More</b-button>
@@ -32,8 +35,6 @@
                 </div>
             </div>
         </main>
-
-
     </div>
 </template>
 
@@ -44,6 +45,7 @@
         ],
         data() {
             return {
+                "startDate": "",
                 "cityPickers": [],
             }
         },
@@ -53,8 +55,25 @@
             },
 
             next() {
-                console.log(this.$router);
-                this.$router.push({name: "results"});
+                let visits = [];
+                for (let i = 0; i < this.cityPickers.length; i++) {
+                    visits.push({
+                        name: this.$refs.hops[i].name,
+                        country: this.$refs.hops[i].country,
+                        days: this.$refs.hops[i].days,
+                    });
+                }
+
+                this.$router.push({
+                    name: "results", params: {
+                        startDate: this.startDate,
+                        from: {
+                            name: this.$refs.from.name,
+                            country: this.$refs.from.country,
+                        },
+                        visits: visits,
+                    }
+                });
             },
 
             appendCityPicker() {
