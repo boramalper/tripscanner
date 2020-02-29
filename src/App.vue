@@ -53,7 +53,8 @@
             },
 
             next() {
-                this.$router.push({path: "/results"})
+                console.log(this.$router);
+                this.$router.push({name: "results"});
             },
 
             appendCityPicker() {

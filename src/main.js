@@ -26,20 +26,19 @@ import VueRouter from 'vue-router'
     Vue.component("CityPicker", CityPicker);
 
     const router = new VueRouter({
-        mode: "history",
         routes: [
-            {path: "/", name:"home", component: App},
-            {path: '/results', name:"resuls", component: ResultsApp},
+            {path: "/", name:"home", component: App, props: {fuse: fuse}},
+            {path: '/results', name:"results", component: ResultsApp},
         ],
     });
 
     Vue.config.productionTip = false;
 
     new Vue({
-        render: h => h(App),
+        el: '#app',
         router,
-        components: {App}
-    }).$mount('#app')
+        components: { App }
+    })
 
     //
     // const v = new Vue({
