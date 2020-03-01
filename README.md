@@ -4,6 +4,10 @@
 
 See https://devpost.com/software/tripscanner-znpwi8
 
+By
+- Sarah Ihme
+- Bora M. Alper
+
 ## Running
 ```bash
 ./runall.sh
