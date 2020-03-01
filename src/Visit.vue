@@ -8,25 +8,32 @@
                 <b-card>
                     <table>
                         <tr>
-                            <td>Carrier:</td>
+                            <td>Carrier: </td>
                             <td>{{ this.flight.carrierId }}</td>
                         </tr>
                         <tr>
-                            <td>Emission:</td>
+                            <td>Emission: </td>
                             <td>{{ this.flight.emission }}</td>
                         </tr>
                         <tr>
-                            <td>Price:</td>
+                            <td>Price: </td>
                             <td>{{ this.flight.price }}</td>
+                        </tr>
+                        <tr>
+                            <td>Duration: </td>
+                            <td>{{ this.flight.time.toFixed(1) }} hours</td>
                         </tr>
                     </table>
                 </b-card>
             </b-col>
             <b-col>
-                <b-card>
+                <b-card
+                        :bg-variant="this.totalTime() < this.flight.time + 3 ? 'success' : '' "
+                        :text-variant="this.totalTime() < this.flight.time + 3 ? 'white' : '' "
+                >
                     <p><b>Departure:</b><br />{{ this.legs[0].departure }}</p>
 
-                    <p><b>Total Time:</b><br />{{  }}</p>
+                    <p><b>Total Time:</b><br /><span>{{ this.totalTime().toFixed(1) }} hours</span></p>
 
                     <b>Stations:</b>
                     <ol>
@@ -66,7 +73,7 @@
             }
         },
 
-        mounted() {
+        created() {
             (async () => {
                 const fromUrl = new URL("http://127.0.0.1:3000/api/stations");
                 fromUrl.searchParams.append("query", `${this.fromDict.name} ${this.fromDict.country}`);
@@ -91,7 +98,11 @@
                 .catch(console.error);
         },
 
-        methods: {},
+        methods: {
+            totalTime() {
+                return this.legs.map(l => new Date(l.arrival) - new Date(l.departure)).reduce((a, b) => a + b, 0) / 3600000;
+            },
+        },
     }
 </script>
 
