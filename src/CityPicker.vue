@@ -12,6 +12,7 @@
                     v-for="option in this.options"
                     :name="option.name"
                     :country="option.country"
+                    :iata="option.iata"
                     :id="option.name + ',' +  option.country"
                     :key="option.name + ',' +  option.country"
                     v-on:click="cityClick"
@@ -43,6 +44,7 @@
                 "activeKey": "",
                 "name": "",
                 "country": "",
+                "iata": "",
                 "days": "",
             }
         },
@@ -57,6 +59,7 @@
 
                 this.name = e.target.getAttribute("name");
                 this.country = e.target.getAttribute("country");
+                this.iata = e.target.getAttribute("iata");
             }
         },
     }

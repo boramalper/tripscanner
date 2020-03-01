@@ -60,6 +60,7 @@
                     visits.push({
                         name: this.$refs.hops[i].name,
                         country: this.$refs.hops[i].country,
+                        iata: this.$refs.hops[i].iata,
                         days: this.$refs.hops[i].days,
                     });
                 }
@@ -70,6 +71,7 @@
                         from: {
                             name: this.$refs.from.name,
                             country: this.$refs.from.country,
+                            iata: this.$refs.from.iata,
                         },
                         visits: visits,
                     }
